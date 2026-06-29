@@ -263,13 +263,6 @@
     /* Reveal-on-scroll */
     .reveal { opacity: 0; transform: translateY(44px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* Reduced motion: stop looping/entrance MOTION, but keep everything VISIBLE */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .eyebrow, .hero h1, .subtitle, .meta, .cta, .reveal { opacity: 1 !important; transform: none !important; }
-      .chevrons span { opacity: 1 !important; }
-    }
   </style>
 </head>
 <body>
@@ -322,7 +315,7 @@
   </footer>
 
   <script>
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduceMotion = false; // animations forced on regardless of OS/browser setting
 
     /* ---------- Reveal on scroll ---------- */
     const observer = new IntersectionObserver((entries) => {
